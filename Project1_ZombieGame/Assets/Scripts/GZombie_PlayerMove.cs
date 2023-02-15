@@ -30,10 +30,18 @@ public class GZombie_PlayerMove : MonoBehaviour
     private void Move()
     {
         float axisV = Input.GetAxis("Vertical");
-        float axisY = Input.GetAxis("Horizontal");
+        float axisH = Input.GetAxis("Horizontal");
 
         transform.Translate(Vector3.forward * axisV * movingSpeed * Time.deltaTime);
-        transform.Translate(Vector3.right * axisY * movingSpeed * Time.deltaTime);
+        transform.Translate(Vector3.right * axisH * movingSpeed * Time.deltaTime);
+    }
+
+    private void Jump()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            playerRigidbody.AddForce(Vector3.up * 1, ForceMode.Impulse);
+        }
     }
 
     private void Jump()
